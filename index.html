@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🎉 Happy Birthday Future Doctor!</title>
+  <meta name="description" content="A fun, dua‑filled birthday wish page for an aspiring doctor (MBBS)." />
+  <style>
+    :root{
+      --bg-start:#0f172a; /* dark navy */
+      --bg-end:#1e3a8a;   /* royal blue */
+      --card:#111827ee;
+      --text:#e0f2fe;
+      --accent:#22d3ee;
+      --muted:#93c5fd;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;
+      color:var(--text);
+      background: radial-gradient(circle at top left,var(--bg-start),var(--bg-end));
+      overflow-x:hidden;
+    }
+    .container{ max-width:980px; margin:0 auto; padding:24px; position:relative; }
+    header{ display:flex; gap:16px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+    .badge{padding:6px 10px; border:1px solid #22d3ee88; border-radius:999px; background:#22d3ee22; backdrop-filter: blur(4px)}
+    .card{ background:var(--card); border:1px solid #22d3ee33; border-radius:20px; padding:28px; box-shadow:0 20px 60px #0006; }
+    h1{font-size: clamp(28px, 5vw, 56px); line-height:1.1; margin:0 0 8px}
+    h2{font-size: clamp(20px, 3.2vw, 32px); margin:18px 0 8px}
+    p{margin:8px 0}
+    .muted{color:var(--muted)}
+    .accent{color:var(--accent)}
+    .hero{ display:grid; grid-template-columns:1.1fr .9fr; gap:20px; align-items:center; }
+    @media (max-width:880px){ .hero{ grid-template-columns:1fr; } }
+
+    .photo{ aspect-ratio: 4/3; border-radius:18px; overflow:hidden; border:2px solid #22d3ee55; background:#000; }
+    .photo img{width:100%; height:100%; object-fit:cover}
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+    @media (max-width:720px){ .grid{ grid-template-columns:repeat(2,1fr);} }
+    .btn{ appearance:none; border:1px solid #22d3ee66; background:#22d3ee22; color:var(--text); padding:10px 14px; border-radius:12px; cursor:pointer; font-weight:600; transition:.2s transform,.2s background; }
+    .btn:hover{transform:translateY(-1px); background:#22d3ee33}
+    .row{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .pill{padding:10px 12px; border-radius:999px; background:#22d3ee22; border:1px solid #22d3ee55}
+
+    /* Fun stethoscope emoji floating */
+    .floating-icons span{
+      position:absolute; font-size:32px; animation: floaty 12s linear infinite;
+    }
+    @keyframes floaty{ from{ transform:translateY(120vh) } to{ transform:translateY(-10vh) } }
+
+    #confetti{ position:fixed; inset:0; pointer-events:none; z-index:999; }
+    footer{opacity:.8; text-align:center; margin:24px 0 12px}
+    .type{ border-right: 2px solid var(--accent); white-space:nowrap; overflow:hidden }
+  </style>
+</head>
+<body>
+  <canvas id="confetti"></canvas>
+
+  <div class="container">
+    <div class="floating-icons" id="icons"></div>
+
+    <header>
+      <div class="badge">🩺 Future Doctor’s Day: <span id="toName">Friend</span></div>
+      <div class="row">
+        <button class="btn" id="playBtn">▶️ Nasheed</button>
+        <button class="btn" id="confettiBtn">🎊 Confetti</button>
+        <button class="btn" id="shareBtn">🔗 Share</button>
+      </div>
+    </header>
+
+    <main class="card" style="margin-top:16px">
+      <section class="hero">
+        <div>
+          <h1 class="type" id="headline">Happy Birthday, Dr. <span class="accent" id="headlineName">Friend</span> (InshaAllah)! 🎉</h1>
+          <p class="muted" id="sub">Duas: May Allah grant you success in MDCAT, make MBBS easy for you, fill your life with barakah, shifa, and ilm beneficial for the ummah. 🤲</p>
+          <div style="margin-top:14px" class="row">
+            <span class="pill">From: <strong id="fromName">Me</strong></span>
+            <span class="pill">Age: <strong id="age">🎈</strong></span>
+            <span class="pill">Date: <strong id="date"></strong></span>
+          </div>
+          <p style="margin-top:14px" id="message">Stay focused, strong, and funny as always 😎. May your stethoscope always find hearts beating with happiness. 💙</p>
+        </div>
+        <div class="photo">
+          <img id="heroImg" alt="Doctor theme" src="https://images.unsplash.com/photo-1582719471137-c3967ffb1c84?q=80&w=1600&auto=format&fit=crop"/>
+        </div>
+      </section>
+
+      <section style="margin-top:24px">
+        <h2>Mini Gallery</h2>
+        <p class="muted">Swap with your MBBS prep pics or funny squad photos.</p>
+        <div class="grid" id="gallery">
+          <div class="photo"><img alt="pic1" src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1400&auto=format&fit=crop"></div>
+          <div class="photo"><img alt="pic2" src="https://images.unsplash.com/photo-1606813907290-9ecdf52db0bb?q=80&w=1400&auto=format&fit=crop"></div>
+          <div class="photo"><img alt="pic3" src="https://images.unsplash.com/photo-1588776814546-1cb3e6da13ed?q=80&w=1400&auto=format&fit=crop"></div>
+        </div>
+      </section>
+
+      <section style="margin-top:24px">
+        <h2>Dua Section</h2>
+        <div class="card" style="margin-top:8px; background:#1e293bee">
+          <p>🤲 May Allah make your exams easy, give you sabr and tawfiq, and accept you as a source of shifa for people.</p>
+          <p>🩺 May you become a doctor who heals with both ilm and akhlaq.</p>
+          <p>📖 May your knowledge benefit the world and your aakhirah.</p>
+        </div>
+      </section>
+
+      <section style="margin-top:24px">
+        <h2>Countdown to Next Birthday</h2>
+        <div class="row" id="countdown" style="font-weight:800; font-size:22px"></div>
+      </section>
+
+      <section style="margin-top:24px">
+        <h2>Wish Wall</h2>
+        <p class="muted">Write your crazy med jokes, duas, or roast messages 🤭</p>
+        <div class="row" style="gap:8px; margin-bottom:10px">
+          <input id="wishInput" class="pill" style="min-width:220px; background:#00000040; color:var(--text); border:1px solid #22d3ee55" placeholder="Type a wish & press Enter"/>
+          <button class="btn" id="clearBtn">🧹 Clear</button>
+        </div>
+        <div id="wishes" class="grid" style="grid-template-columns:repeat(2,1fr)"></div>
+      </section>
+    </main>
+
+    <footer>
+      <small class="muted">Built with 💙 & duas — May Allah accept. Host it anywhere.</small>
+    </footer>
+  </div>
+
+  <audio id="song" src="song.mp3" preload="none"></audio>
+
+  <script>
+    const $ = s => document.querySelector(s);
+    const params = new URLSearchParams(location.search);
+    const to = params.get('to') || 'Friend';
+    const from = params.get('from') || 'Your Dev Buddy';
+    const msg = params.get('msg') || '';
+    const birth = params.get('dob');
+    const img = params.get('img');
+
+    $('#toName').textContent = to;
+    $('#headlineName').textContent = to;
+    $('#fromName').textContent = from;
+    if (msg) $('#message').textContent = msg;
+    if (img) $('#heroImg').src = img;
+
+    const today = new Date();
+    $('#date').textContent = today.toDateString();
+    const ageEl = $('#age');
+    if (birth){
+      const b = new Date(birth);
+      let age = today.getFullYear() - b.getFullYear();
+      const hasHad = (today.getMonth()>b.getMonth()) || (today.getMonth()===b.getMonth() && today.getDate()>=b.getDate());
+      if(!hasHad) age--;
+      ageEl.textContent = age;
+    } else { ageEl.textContent = '🎈'; }
+
+    function nextBirthday(dateStr){
+      if(!dateStr) return null;
+      const b = new Date(dateStr);
+      const now = new Date();
+      let target = new Date(now.getFullYear(), b.getMonth(), b.getDate());
+      if (target < now) target.setFullYear(now.getFullYear()+1);
+      return target;
+    }
+    function renderCountdown(){
+      const target = nextBirthday(birth);
+      const c = $('#countdown');
+      if(!target){ c.textContent = 'Add ?dob=YYYY-MM-DD to enable countdown!'; return; }
+      const diff = target - new Date();
+      const d = Math.floor(diff/86400000);
+      const h = Math.floor((diff%86400000)/3600000);
+      const m = Math.floor((diff%3600000)/60000);
+      const s = Math.floor((diff%60000)/1000);
+      c.innerHTML = `<div class="pill">${d} days</div><div class="pill">${h} hrs</div><div class="pill">${m} min</div><div class="pill">${s} sec</div>`;
+      requestAnimationFrame(renderCountdown);
+    }
+    renderCountdown();
+
+    (function typewriter(){
+      const el = $('#headline');
+      const full = el.textContent; el.textContent = '';
+      let i=0; const tick=()=>{ el.textContent = full.slice(0, i++); if(i<=full.length) setTimeout(tick, 40); else el.classList.remove('type'); };
+      tick();
+    })();
+
+    const WKEY = 'birthday_wishes_doctor';
+    const wishesEl = $('#wishes');
+    function renderWishes(){
+      const items = JSON.parse(localStorage.getItem(WKEY) || '[]');
+      wishesEl.innerHTML = items.map(t=>`<div class="card" style="padding:14px">${t}</div>`).join('');
+    }
+    renderWishes();
+    $('#wishInput').addEventListener('keydown', e=>{
+      if(e.key==='Enter'){
+        const v = e.target.value.trim(); if(!v) return;
+        const items = JSON.parse(localStorage.getItem(WKEY) || '[]');
+        items.unshift(v); localStorage.setItem(WKEY, JSON.stringify(items.slice(0,20)));
+        e.target.value=''; renderWishes();
+      }
+    });
+    $('#clearBtn').onclick = ()=>{ localStorage.removeItem(WKEY); renderWishes(); };
+
+    $('#shareBtn').onclick = async ()=>{
+      const url = new URL(location.href);
+      url.search = new URLSearchParams({to,from,msg: msg || $('#message').textContent, dob: birth||''}).toString();
+      const link = url.toString();
+      try { await navigator.clipboard.writeText(link); alert('Link copied!\n' + link); }
+      catch{ prompt('Copy your link:', link); }
+    };
+
+    const audio = $('#song');
+    $('#playBtn').onclick = async ()=>{
+      try{ if(audio.paused){ await audio.play(); } else { audio.pause(); } }
+      catch(e){ alert('Add a song.mp3 (nasheed) to enable background audio.'); }
+    };
+
+    // floating icons
+    const icons = ['🩺','💉','📚','😂','💊'];
+    function spawnIcons(){
+      const el = document.createElement('span');
+      el.textContent = icons[Math.floor(Math.random()*icons.length)];
+      el.style.left = Math.random()*100 + 'vw';
+      el.style.animationDuration = (8+Math.random()*6)+'s';
+      document.getElementById('icons').appendChild(el);
+      setTimeout(()=>el.remove(),14000);
+    }
+    setInterval(spawnIcons,1500);
+
+    // Confetti
+    const canvas = document.getElementById('confetti');
+    const ctx = canvas.getContext('2d');
+    let pieces = [];
+    function resize(){ canvas.width = innerWidth; canvas.height = innerHeight; }
+    addEventListener('resize', resize); resize();
+    function spawn(n=180){
+      for(let i=0;i<n;i++){
+        pieces.push({ x:Math.random()*canvas.width,y:-20-Math.random()*canvas.height,r:4+Math.random()*6,vy:2+Math.random()*3,vx:(Math.random()-.5)*1.2,rot:Math.random()*Math.PI,vr:(Math.random()-.5)*0.2,shade:`hsl(${Math.random()*360}, 90%, 60%)` });
+      }
+    }
+    function step(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      pieces.forEach(p=>{
+        p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+        if(p.y>canvas.height+40) p.y = -20, p.x = Math.random()*canvas.width;
+        ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot);
+        ctx.fillStyle = p.shade; ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*0.6); ctx.restore();
+      });
+      requestAnimationFrame(step);
+    }
+    spawn(220); step();
+    document.getElementById('confettiBtn').onclick = ()=> spawn(200);
+  </script>
+</body>
+</html>
