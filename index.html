@@ -61,10 +61,9 @@
     <div class="floating-icons" id="icons"></div>
 
     <header>
-      <div class="badge">🩺 Future Doctor’s Day: <span id="toName">Friend</span></div>
+      <div class="badge">🩺 Future Doctor’s Day: <span id="toName">Junaid Khalid</span></div>
       <div class="row">
-        <button class="btn" id="playBtn">▶️ Nasheed</button>
-        <button class="btn" id="confettiBtn">🎊 Confetti</button>
+        <button class="btn" id="playBtn">▶️ Music</button>
         <button class="btn" id="shareBtn">🔗 Share</button>
       </div>
     </header>
@@ -72,8 +71,8 @@
     <main class="card" style="margin-top:16px">
       <section class="hero">
         <div>
-          <h1 class="type" id="headline">Happy Birthday, Dr. <span class="accent" id="headlineName">Friend</span> (InshaAllah)! 🎉</h1>
-          <p class="muted" id="sub">Duas: May Allah grant you success in MDCAT, make MBBS easy for you, fill your life with barakah, shifa, and ilm beneficial for the ummah. 🤲</p>
+          <h1 class="type" id="headline">Happy Birthday, Dr. <span class="accent" id="headlineName">Junaid Khalid</span> (InshaAllah)! 🎉</h1>
+          <p class="muted" id="sub">May Allah grant you success in MDCAT, make MBBS easy for you, fill your life with barakah, shifa, and ilm beneficial for the ummah. 🤲</p>
           <div style="margin-top:14px" class="row">
             <span class="pill">From: <strong id="fromName">Me</strong></span>
             <span class="pill">Age: <strong id="age">🎈</strong></span>
@@ -82,7 +81,7 @@
           <p style="margin-top:14px" id="message">Stay focused, strong, and funny as always 😎. May your stethoscope always find hearts beating with happiness. 💙</p>
         </div>
         <div class="photo">
-          <img id="heroImg" alt="Doctor theme" src="https://images.unsplash.com/photo-1582719471137-c3967ffb1c84?q=80&w=1600&auto=format&fit=crop"/>
+          <img id="heroImg" alt="Doctor theme" src="media/2.jpg"/>
         </div>
       </section>
 
@@ -90,9 +89,10 @@
         <h2>Mini Gallery</h2>
         <p class="muted">Swap with your MBBS prep pics or funny squad photos.</p>
         <div class="grid" id="gallery">
-          <div class="photo"><img alt="pic1" src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1400&auto=format&fit=crop"></div>
-          <div class="photo"><img alt="pic2" src="https://images.unsplash.com/photo-1606813907290-9ecdf52db0bb?q=80&w=1400&auto=format&fit=crop"></div>
-          <div class="photo"><img alt="pic3" src="https://images.unsplash.com/photo-1588776814546-1cb3e6da13ed?q=80&w=1400&auto=format&fit=crop"></div>
+          <div class="photo"><img alt="pic1" src="media/3.jpg"></div>
+          <div class="photo"><img alt="pic2" src="media/4.jpg"></div>
+          <div class="photo"><img alt="pic3" src="media/5.jpg"></div>
+		  <div class="photo"><img alt="pic4" src="media/6.jpg"></div>
         </div>
       </section>
 
@@ -122,19 +122,19 @@
     </main>
 
     <footer>
-      <small class="muted">Built with 💙 & duas — May Allah accept. Host it anywhere.</small>
+      <small class="muted">Built with 💙 & duas HamzaxDevelopers</small>
     </footer>
   </div>
 
-  <audio id="song" src="song.mp3" preload="none"></audio>
+  <audio id="song" src="media/audio.mp3" preload="none"></audio>
 
   <script>
     const $ = s => document.querySelector(s);
     const params = new URLSearchParams(location.search);
-    const to = params.get('to') || 'Friend';
+    const to = params.get('to') || 'Junaid Khalid';
     const from = params.get('from') || 'Your Dev Buddy';
     const msg = params.get('msg') || '';
-    const birth = params.get('dob');
+    const birth = "2005-08-25"
     const img = params.get('img');
 
     $('#toName').textContent = to;
@@ -152,7 +152,7 @@
       const hasHad = (today.getMonth()>b.getMonth()) || (today.getMonth()===b.getMonth() && today.getDate()>=b.getDate());
       if(!hasHad) age--;
       ageEl.textContent = age;
-    } else { ageEl.textContent = '🎈'; }
+    } else { ageEl.textContent = '20'; }
 
     function nextBirthday(dateStr){
       if(!dateStr) return null;
